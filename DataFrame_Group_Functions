@@ -1,0 +1,57 @@
+import pandas as pd
+import copy as cp
+
+#分组加总
+def group_sum(df,groupby_list,sum_list):
+    #Examples: aa=group_sum(df,['a','b'],['d','c'])
+    df0=cp.deepcopy(df)
+    var_list=groupby_list+sum_list
+    df1=df0[var_list].groupby(groupby_list).sum()
+    df2=pd.DataFrame(df1.reset_index(),columns=var_list)
+    df_final=cp.deepcopy(df2)
+    return df_final
+
+
+#分组计数
+def group_count(df,groupby_list,count_var_name):
+    #Examples: aa=group_count(df,['a','b'],'count_s')
+    global df1
+    df0=cp.deepcopy(df)
+    df0[count_var_name]=1
+    var_list=groupby_list+[count_var_name]
+    df1=df0[var_list].groupby(groupby_list).sum()
+    df2=pd.DataFrame(df1.reset_index(),columns=var_list)
+    df_final=cp.deepcopy(df2)
+    return df_final
+
+
+#分组取最大值
+def group_max(df,groupby_list,max_list):
+    #Examples: aa=group_max(df,['a','b'],['d','c'])
+    df0=cp.deepcopy(df)
+    var_list=groupby_list+max_list
+    df1=df0[var_list].groupby(groupby_list).max()
+    df2=pd.DataFrame(df1.reset_index(),columns=var_list)
+    df_final=cp.deepcopy(df2)
+    return df_final
+
+
+#分组取最小值
+def group_min(df,groupby_list,min_list):
+    #Examples: aa=group_min(df,['a','b'],['d','c'])
+    df0=cp.deepcopy(df)
+    var_list=groupby_list+min_list
+    df1=df0[var_list].groupby(groupby_list).min()
+    df2=pd.DataFrame(df1.reset_index(),columns=var_list)
+    df_final=cp.deepcopy(df2)
+    return df_final
+
+#分组取平均值
+def group_mean(df,groupby_list,mean_list):
+    #Examples: aa=group_mean(df,['a','b'],'mean_s')
+    df0=cp.deepcopy(df)
+    var_list=groupby_list+mean_list
+    df1=df0[var_list].groupby(groupby_list).mean()
+    df2=pd.DataFrame(df1.reset_index(),columns=var_list)
+    df_final=cp.deepcopy(df2)
+    return df_final
