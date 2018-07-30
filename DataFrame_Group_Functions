@@ -1,6 +1,9 @@
 import pandas as pd
 import copy as cp
 
+# DataFrame Examples for the following funtions 
+df=pd.DataFrame({'a':[1,2,1],'b':[4,5,4],'c':[9,8,7],'d':[12,13,14]})
+
 #分组加总
 def group_sum(df,groupby_list,sum_list):
     #Examples: aa=group_sum(df,['a','b'],['d','c'])
